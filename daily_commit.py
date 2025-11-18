@@ -26,6 +26,15 @@ def make_daily_commit():
         now = datetime.now()
         timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
         date_str = now.strftime("%Y-%m-%d")
+        hour = now.hour
+        
+        # Determine time of day context
+        if 5 <= hour < 12:
+            time_context = "Morning health check"
+        elif 12 <= hour < 17:
+            time_context = "Afternoon monitoring"
+        else:
+            time_context = "Evening baseline"
         
         # Collect system metrics
         metrics_tracker = SystemMetrics(METRICS_FILE)
@@ -39,11 +48,16 @@ def make_daily_commit():
         with open(log_path, 'a') as f:
             f.write(f"Automated commit: {timestamp}\n")
         
-        # Git operations - add both log file and metrics file
+        # Git operations - only commit the log file (metrics stay local)
         subprocess.run(['git', 'add', LOG_FILE], check=True)
-        subprocess.run(['git', 'add', METRICS_FILE], check=True)
         
-        commit_message = f"Automated daily commit - {timestamp}"
+        # Create professional commit message with time context
+        commit_message = (
+            f"{time_context}: "
+            f"CPU {metrics['cpu']['usage_percent']}% | "
+            f"Memory {metrics['memory']['percent']}% | "
+            f"Disk {metrics['disk']['percent']}% used"
+        )
         subprocess.run(['git', 'commit', '-m', commit_message], check=True)
         
         # Push to remote
