@@ -34,6 +34,11 @@ RESTART (STOP then START):
 pkill -f daily_commit.py && nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
 
 
+MANUAL PUSH (run immediately without waiting):
+-----------------------------------------------
+source .venv/bin/activate && python -c "from scripts.daily_commit import make_daily_commit; make_daily_commit()"
+
+
 TEST PUSH (verify auto-push works):
 -----------------------------------
 git add .
