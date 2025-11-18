@@ -98,7 +98,7 @@ if __name__ == "__main__":
     demo_individual_metrics()
     
     print("\n" + "=" * 60)
-    print("✅ Demo Complete!")
+    print("Demo Complete!")
     print("=" * 60)
     print("\nNext Steps:")
     print("  1. Check the generated files: data/demo_metrics.json & data/demo_metrics.txt")
