@@ -57,6 +57,7 @@ NOTES:
 - this script runs at 9:00 AM, 2:00 PM, and 8:00 PM daily
 - it also runs immediately when you start it
 - automatically tracks system metrics (CPU, memory, disk, network)
+- automatically pulls remote changes before pushing (safe to edit on github)
 - metrics are saved to data/system_metrics.json
 - commit logs are saved to data/daily_log.txt
 - nohup keeps it running even after closing the terminal & runs it in background

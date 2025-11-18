@@ -62,6 +62,10 @@ def make_daily_commit():
             f.write(log_entry)
         
         # Git operations - only commit the log file (metrics stay local)
+        
+        # Pull remote changes first to avoid conflicts
+        subprocess.run(['git', 'pull', '--rebase', 'origin', 'main'], check=True)
+        
         subprocess.run(['git', 'add', LOG_FILE], check=True)
         
         # Create professional commit message with time context (same as log entry)

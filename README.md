@@ -11,6 +11,7 @@ python-based automation tool that performs scheduled commits and maintains daily
 - **system metrics tracking** - monitors cpu, memory, disk space, and network activity
 - **smart scheduling** - runs at 9 am, 2 pm, and 8 pm automatically
 - **professional commit messages** - shows actual system metrics in commit history
+- **auto-sync with github** - automatically pulls remote changes before pushing to avoid conflicts
 - **privacy-focused** - metrics stored locally, only commit logs pushed to github
 - **modular design** - clean separation between scripts and data
 
@@ -23,8 +24,9 @@ every day at **9:00 am, 2:00 pm, and 8:00 pm**, the automation:
 1. collects current system metrics (cpu, memory, disk, network)
 2. logs metrics locally in `data/system_metrics.json`
 3. updates `data/daily_log.txt` with formatted entry
-4. creates professional git commit with metrics in message
-5. pushes to github automatically
+4. pulls any remote changes from github (auto-sync)
+5. creates professional git commit with metrics in message
+6. pushes to github automatically
 
 **example commit messages:**
 ```
