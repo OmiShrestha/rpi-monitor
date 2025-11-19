@@ -18,6 +18,7 @@ from scripts.system_metrics import SystemMetrics
 # Configuration
 REPO_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Parent directory
 LOG_FILE = "data/daily_log.txt"
+AUTOMATION_LOG = "automation.log"
 METRICS_FILE = "data/system_metrics.json"  # or use .txt for human-readable format
 
 
@@ -61,8 +62,8 @@ def make_daily_commit():
         with open(log_path, 'a') as f:
             f.write(log_entry)
         
-        # Git operations - only commit the log file (metrics stay local)
-        subprocess.run(['git', 'add', LOG_FILE], check=True)
+        # Git operations - commit log files (metrics stay local)
+        subprocess.run(['git', 'add', LOG_FILE, AUTOMATION_LOG], check=True)
         
         # Create professional commit message with time context (same as log entry)
         commit_message = (
