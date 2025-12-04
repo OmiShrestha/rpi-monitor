@@ -32,6 +32,7 @@ Evening baseline: CPU 18% | Memory 65% | Disk 22% used
 ```
 
 ---
+<img width="1408" height="625" alt="rpi-sys-info" src="https://github.com/user-attachments/assets/3bb4b212-394d-4587-845f-19c96e35f6e8" />
 
 ## quick start
 
